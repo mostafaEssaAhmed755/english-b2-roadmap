@@ -202,17 +202,24 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="showPhase(0)">📍 المرحلة الأولى</button>
-  <button class="tab" onclick="showPhase(1)">🚀 المرحلة الثانية</button>
-  <button class="tab" onclick="showPhase(2)">⚡ المرحلة الثالثة</button>
-  <button class="tab" onclick="showPhase(3)">🎯 المرحلة الرابعة</button>
-  <button class="tab" onclick="showPhase(4)">📚 المصادر</button>
-  <button class="tab" onclick="showPhase(5)">📓 سجل النشاط</button>
-  <button class="tab" onclick="showPhase(6)">🎙 Shadowing</button>
-  <button class="tab" onclick="showPhase(7)">🗣 الكلام</button>
+  <button class="tab active" data-section="plan" onclick="showSection('plan')">📍 الخطة</button>
+  <button class="tab" data-section="resources" onclick="showSection('resources')">📚 المصادر</button>
+  <button class="tab" data-section="log" onclick="showSection('log')">📓 السجل</button>
+  <button class="tab" data-section="shadowing" onclick="showSection('shadowing')">🎙 Shadowing</button>
+  <button class="tab" data-section="speaking" onclick="showSection('speaking')">🗣 الكلام</button>
+</div>
+
+<div class="phase-subnav" id="phaseSubnav">
+  <button class="phase-tab active" onclick="showPhase(0)">١ · الأساسيات</button>
+  <button class="phase-tab" onclick="showPhase(1)">٢ · التعمق</button>
+  <button class="phase-tab" onclick="showPhase(2)">٣ · التسارع</button>
+  <button class="phase-tab" onclick="showPhase(3)">٤ · الإثبات</button>
 </div>
 
 <div class="content">
+
+  <!-- قسم الخطة -->
+  <div class="section-content active" id="section-plan">
 
   <!-- PHASE 1 -->
   <div class="phase active" id="phase-0">
@@ -973,12 +980,15 @@
 
     <div class="nav-buttons">
       <button class="nav-btn" onclick="showPhase(2)">← المرحلة الثالثة</button>
-      <button class="nav-btn primary" onclick="showPhase(4)">المصادر الكاملة →</button>
+      <button class="nav-btn primary" onclick="showSection('resources')">المصادر الكاملة →</button>
     </div>
   </div>
 
-  <!-- RESOURCES PAGE -->
-  <div class="phase" id="phase-4">
+  </div><!-- /section-plan -->
+
+  <!-- قسم المصادر -->
+  <div class="section-content" id="section-resources">
+  <div class="phase active" id="phase-4">
     <div class="phase-header">
       <div class="phase-tag p2">ALL RESOURCES</div>
       <div class="phase-title">المصادر الكاملة لكل مهارة</div>
@@ -1190,13 +1200,15 @@
     </div>
 
     <div class="nav-buttons">
-      <button class="nav-btn" onclick="showPhase(3)">← المرحلة الرابعة</button>
-      <button class="nav-btn primary" onclick="showPhase(0)">↑ من البداية</button>
+      <button class="nav-btn" onclick="showSection('plan')">← الخطة</button>
+      <button class="nav-btn primary" onclick="showSection('plan')">↑ من البداية</button>
     </div>
   </div>
+  </div><!-- /section-resources -->
 
-  <!-- ACTIVITY LOG -->
-  <div class="phase" id="phase-5">
+  <!-- قسم السجل -->
+  <div class="section-content" id="section-log">
+  <div class="phase active" id="phase-5">
     <div class="phase-header">
       <div class="phase-tag p2">ACTIVITY LOG</div>
       <div class="phase-title">سجل الاستماع والكلام</div>
@@ -1275,9 +1287,11 @@
       <button class="data-btn danger" onclick="confirmReset()">🗑️ مسح كل البيانات</button>
     </div>
   </div>
+  </div><!-- /section-log -->
 
-  <!-- SHADOWING MODE -->
-  <div class="phase" id="phase-6">
+  <!-- قسم Shadowing -->
+  <div class="section-content" id="section-shadowing">
+  <div class="phase active" id="phase-6">
     <div class="phase-header">
       <div class="phase-tag p2">SHADOWING MODE</div>
       <div class="phase-title">تدريب الـ Shadowing</div>
@@ -1309,8 +1323,11 @@
     <div id="shadowExamples"></div>
   </div>
 
-  <!-- SPEAKING JOURNAL + PRONUNCIATION RADAR -->
-  <div class="phase" id="phase-7">
+  </div><!-- /section-shadowing -->
+
+  <!-- قسم الكلام -->
+  <div class="section-content" id="section-speaking">
+  <div class="phase active" id="phase-7">
     <div class="phase-header">
       <div class="phase-tag p3">SPEAKING PRACTICE</div>
       <div class="phase-title">ممارسة الكلام والنطق</div>
@@ -1340,6 +1357,7 @@
     <div class="section-title">🔤 خريطة النطق — الأصوات الصعبة</div>
     <div class="phoneme-grid" id="phonemeGrid"></div>
   </div>
+  </div><!-- /section-speaking -->
 
 </div>
 

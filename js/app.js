@@ -1,5 +1,6 @@
 // ─── State ────────────────────────────────────────────────
-let currentPhase = 0;
+let currentSection = 'plan';
+let currentPhase   = 0;
 
 // ─── Theme ────────────────────────────────────────────────
 function toggleTheme() {
@@ -10,27 +11,43 @@ function toggleTheme() {
   localStorage.setItem('theme', next);
 }
 
-// ─── Phase Navigation ─────────────────────────────────────
-function showPhase(index) {
-  document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+// ─── Section Navigation ────────────────────────────────────
+function showSection(name) {
+  document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('phase-' + index).classList.add('active');
-  document.querySelectorAll('.tab')[index].classList.add('active');
+
+  const sectionEl = document.getElementById('section-' + name);
+  if (sectionEl) sectionEl.classList.add('active');
+
+  const tabEl = document.querySelector('[data-section="' + name + '"]');
+  if (tabEl) tabEl.classList.add('active');
+
+  currentSection = name;
+
+  // Show phase sub-nav only for plan section
+  const subnav = document.getElementById('phaseSubnav');
+  if (subnav) subnav.style.display = name === 'plan' ? 'flex' : 'none';
+
+  if (name === 'log')      { renderActivityLog(); renderAnalytics(); renderHeatmap(); }
+  if (name === 'shadowing') { renderShadowExamples(); }
+  if (name === 'speaking')  { renderPhonemeGrid(); renderJournalChart(); }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── Phase Navigation (within plan section) ───────────────
+function showPhase(index) {
+  document.querySelectorAll('#section-plan .phase').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+
+  const phaseEl = document.getElementById('phase-' + index);
+  if (phaseEl) phaseEl.classList.add('active');
+
+  const tabs = document.querySelectorAll('.phase-tab');
+  if (tabs[index]) tabs[index].classList.add('active');
+
   currentPhase = index;
   window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  if (index === 5) {
-    renderActivityLog();
-    renderAnalytics();
-    renderHeatmap();
-  }
-  if (index === 6) {
-    renderShadowExamples();
-  }
-  if (index === 7) {
-    renderPhonemeGrid();
-    renderJournalChart();
-  }
 }
 
 // ─── Day Selector ─────────────────────────────────────────
@@ -63,22 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
   renderAnalytics();
   renderHeatmap();
   for (let i = 0; i < 4; i++) refreshPrompt(i);
-
-  // Make time-slots clickable → load duration into timer
-  // (Handled by handleSlotClick for new slots; legacy slots without data-task-key still use direct listener)
-  document.querySelectorAll('.time-slot:not([data-task-key])').forEach(slot => {
-    const timeEl = slot.querySelector('.slot-time');
-    const textEl = slot.querySelector('.slot-text');
-    if (timeEl && textEl) {
-      const match = timeEl.textContent.match(/\d+/);
-      if (match) {
-        const mins = parseInt(match[0]);
-        const label = textEl.textContent.trim().substring(0, 40);
-        slot.addEventListener('click', () => setTimer(mins, label));
-        slot.setAttribute('title', 'اضغط لضبط المؤقت على ' + mins + ' دقيقة');
-      }
-    }
-  });
 
   // Init phase progress map
   renderPhaseProgressMap();

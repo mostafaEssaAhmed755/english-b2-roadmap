@@ -211,17 +211,50 @@ body::before {
   z-index: 1;
 }
 
-.phase {
+/* ─── Section + Phase visibility ────────────────────────── */
+.section-content {
   display: none;
   animation: fadeIn 0.3s ease;
 }
+.section-content.active { display: block; }
 
+/* Phases inside section-plan use .active; phases in other sections always show */
+.phase { display: none; animation: fadeIn 0.3s ease; }
 .phase.active { display: block; }
+#section-resources .phase,
+#section-log      .phase,
+#section-shadowing .phase,
+#section-speaking  .phase { display: block; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ─── Phase Sub-Nav ─────────────────────────────────────── */
+.phase-subnav {
+  display: flex;
+  gap: 8px;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+.phase-tab {
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.phase-tab:hover { border-color: var(--accent); color: var(--accent); }
+.phase-tab.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
 
 .phase-header {
   text-align: center;
@@ -303,37 +336,6 @@ body::before {
 .day-focus { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
 .day-body { padding: 14px 18px; }
-
-.time-slot {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
-  padding: 10px 12px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 10px;
-  border-right: 3px solid transparent;
-  transition: border-color 0.2s;
-  cursor: pointer;
-}
-
-.time-slot:last-child { margin-bottom: 0; }
-.time-slot:hover { border-right-color: var(--accent); background: rgba(0,212,255,0.05); }
-
-.slot-time {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: var(--accent);
-  background: rgba(0,212,255,0.1);
-  padding: 2px 6px;
-  border-radius: 5px;
-  white-space: nowrap;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.slot-text { font-size: 13px; line-height: 1.5; }
-.slot-emoji { flex-shrink: 0; font-size: 16px; }
 
 /* ─── Skills section ────────────────────────────────────── */
 .skills-grid {
@@ -630,18 +632,6 @@ body::before {
 .day-card.day-active { border-color: var(--accent) !important; box-shadow: 0 0 24px rgba(0,212,255,0.15); }
 .day-card.day-inactive { opacity: 0.4; }
 
-/* ─── Weekly Tracker ────────────────────────────────────── */
-.weekly-tracker { max-width: 900px; margin: 0 auto 24px; padding: 16px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; position: relative; z-index: 1; }
-.tracker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.tracker-label { font-size: 13px; color: var(--muted); font-family: 'Space Mono', monospace; }
-.tracker-streak { font-size: 13px; color: var(--accent); font-family: 'Space Mono', monospace; }
-.tracker-days { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.day-dot { width: 52px; height: 60px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-family: 'Cairo', sans-serif; font-size: 12px; transition: all 0.2s; }
-.day-dot:hover { border-color: var(--accent); color: var(--accent); }
-.day-dot.studied { background: rgba(16,185,129,0.15); border-color: var(--green); color: var(--green); }
-.day-dot.today { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,212,255,0.2); }
-.day-dot .day-num { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.7; }
-
 /* ─── Speaking Prompt ───────────────────────────────────── */
 .speaking-prompt { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(0,212,255,0.05)); border: 1px solid rgba(124,58,237,0.3); border-radius: 12px; padding: 16px; margin-top: 12px; }
 .prompt-header { font-size: 12px; color: var(--accent2); font-family: 'Space Mono', monospace; margin-bottom: 10px; }
@@ -717,29 +707,43 @@ body::before {
 .import-label { display: inline-block; cursor: pointer; }
 
 /* ─── Phase Progress Map ────────────────────────────────── */
-.phase-progress-map { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin: 0 0 24px; }
-.ppm-phases-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.ppm-phase-block { padding: 12px 8px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); transition: opacity 0.3s; }
-.ppm-phase-block.locked-phase { opacity: 0.5; }
-.ppm-phase-label { font-size: 12px; font-weight: 700; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; margin-bottom: 12px; }
-.ppm-level-track { position: relative; display: flex; justify-content: space-between; align-items: flex-start; padding: 0 4px; margin-bottom: 12px; }
-.ppm-track-line { position: absolute; top: 18px; left: 10%; right: 10%; height: 2px; background: var(--border); z-index: 0; }
-.ppm-level-node { display: flex; flex-direction: column; align-items: center; gap: 4px; z-index: 1; }
-.ppm-node-circle { position: relative; width: 36px; height: 36px; }
-.ppm-node-ring { width: 36px; height: 36px; transform: rotate(-90deg); }
-.ppm-ring-bg { fill: none; stroke: var(--border); stroke-width: 3; }
-.ppm-ring-fill { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; transition: stroke-dasharray 0.4s ease; }
-.ppm-level-node.completed .ppm-ring-fill { stroke: var(--green); }
-.ppm-level-node.locked .ppm-ring-fill { stroke: var(--muted); }
-.ppm-node-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 13px; }
-.ppm-node-label { font-size: 10px; color: var(--muted); text-align: center; }
-.ppm-node-pct { font-size: 10px; font-family: 'Space Mono', monospace; color: var(--accent); }
+.phase-progress-map { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px 20px 16px; margin: 0 0 24px; }
+.ppm-phases-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ppm-phase-block { padding: 16px 10px 12px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); transition: opacity 0.3s, filter 0.3s; }
+.ppm-phase-block.locked-phase { opacity: 0.4; filter: grayscale(0.6); }
+/* Phase-specific accent colors */
+#ppm-phase-0 .ppm-phase-label { color: var(--accent); }
+#ppm-phase-0 .ppm-ring-fill  { stroke: var(--accent); }
+#ppm-phase-0 .ppm-phase-bar-fill { background: var(--accent); }
+#ppm-phase-1 .ppm-phase-label { color: var(--accent2); }
+#ppm-phase-1 .ppm-ring-fill  { stroke: var(--accent2); }
+#ppm-phase-1 .ppm-phase-bar-fill { background: var(--accent2); }
+#ppm-phase-2 .ppm-phase-label { color: var(--green); }
+#ppm-phase-2 .ppm-ring-fill  { stroke: var(--green); }
+#ppm-phase-2 .ppm-phase-bar-fill { background: var(--green); }
+#ppm-phase-3 .ppm-phase-label { color: var(--accent3); }
+#ppm-phase-3 .ppm-ring-fill  { stroke: var(--accent3); }
+#ppm-phase-3 .ppm-phase-bar-fill { background: var(--accent3); }
+.ppm-phase-label { font-size: 11px; font-weight: 700; font-family: 'Space Mono', monospace; text-align: center; margin-bottom: 14px; letter-spacing: 0.5px; }
+.ppm-level-track { position: relative; display: flex; justify-content: space-between; align-items: flex-start; padding: 0 6px; margin-bottom: 14px; }
+.ppm-track-line { position: absolute; top: 24px; left: 14%; right: 14%; height: 2px; background: var(--border); z-index: 0; }
+.ppm-level-node { display: flex; flex-direction: column; align-items: center; gap: 5px; z-index: 1; }
+.ppm-node-circle { position: relative; width: 48px; height: 48px; }
+.ppm-node-ring { width: 48px; height: 48px; transform: rotate(-90deg); }
+.ppm-ring-bg { fill: none; stroke: var(--border); stroke-width: 3.5; }
+.ppm-ring-fill { fill: none; stroke-width: 3.5; stroke-linecap: round; transition: stroke-dasharray 0.5s ease; }
+.ppm-level-node.completed .ppm-ring-fill { stroke: var(--green) !important; }
+.ppm-level-node.locked .ppm-ring-fill { stroke: var(--border) !important; }
+.ppm-node-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 15px; line-height: 1; }
+.ppm-node-label { font-size: 9px; color: var(--muted); text-align: center; white-space: nowrap; }
+.ppm-node-pct { font-size: 10px; font-family: 'Space Mono', monospace; font-weight: 700; }
+.ppm-level-node.unlocked .ppm-node-pct { color: inherit; }
 .ppm-level-node.locked .ppm-node-pct { color: var(--muted); }
-.ppm-phase-bar { height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 4px; }
-.ppm-phase-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 4px; transition: width 0.4s ease; }
+.ppm-phase-bar { height: 5px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 5px; }
+.ppm-phase-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
 .ppm-phase-bar-label { font-size: 10px; color: var(--muted); text-align: center; font-family: 'Space Mono', monospace; }
-.ppm-current-banner { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
-#ppmCurrentLabel { font-size: 13px; font-weight: 600; color: var(--text); }
+.ppm-current-banner { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
+#ppmCurrentLabel { font-size: 14px; font-weight: 700; color: var(--text); }
 #ppmUnlockHint { font-size: 12px; color: var(--accent3); font-family: 'Space Mono', monospace; }
 
 /* ─── Slot Redesign ─────────────────────────────────────── */
@@ -861,4 +865,6 @@ body::before {
   .shadow-workspace { grid-template-columns: 1fr; }
   .phoneme-grid { grid-template-columns: 1fr 1fr; }
   .ppm-current-banner { flex-direction: column; align-items: flex-start; }
+  .phase-subnav { gap: 6px; }
+  .phase-tab { padding: 6px 12px; font-size: 12px; }
 }

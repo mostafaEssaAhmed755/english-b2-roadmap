@@ -60,12 +60,145 @@
   </div>
 </div>
 
-<div class="weekly-tracker" id="weeklyTracker">
-  <div class="tracker-header">
-    <span class="tracker-label">أيام الدراسة هذا الأسبوع</span>
-    <span class="tracker-streak" id="streakDisplay">سلسلة: 0 أسبوع</span>
+<div class="phase-progress-map" id="phaseProgressMap">
+  <div class="ppm-phases-row">
+    <!-- Phase 0 -->
+    <div class="ppm-phase-block" id="ppm-phase-0" data-phase="0">
+      <div class="ppm-phase-label">المرحلة الأولى</div>
+      <div class="ppm-level-track">
+        <div class="ppm-track-line"></div>
+        <div class="ppm-level-node unlocked" id="ppm-p0-l0" data-phase="0" data-level="0">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p0-l0"/></svg>
+            <span class="ppm-node-icon">▶</span>
+          </div>
+          <div class="ppm-node-label">الشهر ١</div>
+          <div class="ppm-node-pct" id="ppm-pct-p0-l0">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p0-l1" data-phase="0" data-level="1">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p0-l1"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٢</div>
+          <div class="ppm-node-pct" id="ppm-pct-p0-l1">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p0-l2" data-phase="0" data-level="2">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p0-l2"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٣</div>
+          <div class="ppm-node-pct" id="ppm-pct-p0-l2">0%</div>
+        </div>
+      </div>
+      <div class="ppm-phase-bar"><div class="ppm-phase-bar-fill" id="ppm-bar-p0" style="width:0%"></div></div>
+      <div class="ppm-phase-bar-label" id="ppm-bar-label-p0">0 / 0 مهمة</div>
+    </div>
+    <!-- Phase 1 -->
+    <div class="ppm-phase-block locked-phase" id="ppm-phase-1" data-phase="1">
+      <div class="ppm-phase-label">المرحلة الثانية</div>
+      <div class="ppm-level-track">
+        <div class="ppm-track-line"></div>
+        <div class="ppm-level-node locked" id="ppm-p1-l0" data-phase="1" data-level="0">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p1-l0"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٤</div>
+          <div class="ppm-node-pct" id="ppm-pct-p1-l0">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p1-l1" data-phase="1" data-level="1">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p1-l1"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٥</div>
+          <div class="ppm-node-pct" id="ppm-pct-p1-l1">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p1-l2" data-phase="1" data-level="2">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p1-l2"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٦</div>
+          <div class="ppm-node-pct" id="ppm-pct-p1-l2">0%</div>
+        </div>
+      </div>
+      <div class="ppm-phase-bar"><div class="ppm-phase-bar-fill" id="ppm-bar-p1" style="width:0%"></div></div>
+      <div class="ppm-phase-bar-label" id="ppm-bar-label-p1">0 / 0 مهمة</div>
+    </div>
+    <!-- Phase 2 -->
+    <div class="ppm-phase-block locked-phase" id="ppm-phase-2" data-phase="2">
+      <div class="ppm-phase-label">المرحلة الثالثة</div>
+      <div class="ppm-level-track">
+        <div class="ppm-track-line"></div>
+        <div class="ppm-level-node locked" id="ppm-p2-l0" data-phase="2" data-level="0">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p2-l0"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٧</div>
+          <div class="ppm-node-pct" id="ppm-pct-p2-l0">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p2-l1" data-phase="2" data-level="1">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p2-l1"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٨</div>
+          <div class="ppm-node-pct" id="ppm-pct-p2-l1">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p2-l2" data-phase="2" data-level="2">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p2-l2"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ٩</div>
+          <div class="ppm-node-pct" id="ppm-pct-p2-l2">0%</div>
+        </div>
+      </div>
+      <div class="ppm-phase-bar"><div class="ppm-phase-bar-fill" id="ppm-bar-p2" style="width:0%"></div></div>
+      <div class="ppm-phase-bar-label" id="ppm-bar-label-p2">0 / 0 مهمة</div>
+    </div>
+    <!-- Phase 3 -->
+    <div class="ppm-phase-block locked-phase" id="ppm-phase-3" data-phase="3">
+      <div class="ppm-phase-label">المرحلة الرابعة</div>
+      <div class="ppm-level-track">
+        <div class="ppm-track-line"></div>
+        <div class="ppm-level-node locked" id="ppm-p3-l0" data-phase="3" data-level="0">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p3-l0"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ١٠</div>
+          <div class="ppm-node-pct" id="ppm-pct-p3-l0">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p3-l1" data-phase="3" data-level="1">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p3-l1"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ١١</div>
+          <div class="ppm-node-pct" id="ppm-pct-p3-l1">0%</div>
+        </div>
+        <div class="ppm-level-node locked" id="ppm-p3-l2" data-phase="3" data-level="2">
+          <div class="ppm-node-circle">
+            <svg class="ppm-node-ring" viewBox="0 0 36 36"><circle class="ppm-ring-bg" cx="18" cy="18" r="15"/><circle class="ppm-ring-fill" cx="18" cy="18" r="15" stroke-dasharray="0 94" id="ppm-ring-p3-l2"/></svg>
+            <span class="ppm-node-icon">🔒</span>
+          </div>
+          <div class="ppm-node-label">الشهر ١٢</div>
+          <div class="ppm-node-pct" id="ppm-pct-p3-l2">0%</div>
+        </div>
+      </div>
+      <div class="ppm-phase-bar"><div class="ppm-phase-bar-fill" id="ppm-bar-p3" style="width:0%"></div></div>
+      <div class="ppm-phase-bar-label" id="ppm-bar-label-p3">0 / 0 مهمة</div>
+    </div>
   </div>
-  <div class="tracker-days" id="trackerDays"></div>
+  <div class="ppm-current-banner">
+    <span id="ppmCurrentLabel">أنت في: المرحلة الأولى — الشهر الأول</span>
+    <span id="ppmUnlockHint">أكمل 60% للانتقال للشهر التالي</span>
+  </div>
 </div>
 
 <div class="tabs">
@@ -73,8 +206,10 @@
   <button class="tab" onclick="showPhase(1)">🚀 المرحلة الثانية</button>
   <button class="tab" onclick="showPhase(2)">⚡ المرحلة الثالثة</button>
   <button class="tab" onclick="showPhase(3)">🎯 المرحلة الرابعة</button>
-  <button class="tab" onclick="showPhase(4)">📚 المصادر الكاملة</button>
+  <button class="tab" onclick="showPhase(4)">📚 المصادر</button>
   <button class="tab" onclick="showPhase(5)">📓 سجل النشاط</button>
+  <button class="tab" onclick="showPhase(6)">🎙 Shadowing</button>
+  <button class="tab" onclick="showPhase(7)">🗣 الكلام</button>
 </div>
 
 <div class="content">
@@ -106,25 +241,62 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎙️</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">استماع مكثف — English with Lucy أو BBC 6 Minute English</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_listening" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎙️</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">استماع مكثف — English with Lucy أو BBC 6 Minute English</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_listening')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 3</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.youtube.com/@EnglishwithLucy" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">English with Lucy</span><span class="res-type-badge yt">YT</span></a>
+              <a class="slot-resource" href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">BBC 6 Minute English</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.elllo.org" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Elllo.org — تمارين متدرجة</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📝</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">Shadowing: كرر ما تسمعه بنفس الإيقاع والنبرة</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_shadowing" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📝</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">Shadowing: كرر ما تسمعه بنفس الإيقاع والنبرة</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_shadowing')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.youtube.com/watch?v=VqbDCHNAFnM" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Shadowing Technique Guide — Steve Kaufmann</span><span class="res-type-badge yt">YT</span></a>
+              <a class="slot-resource" href="https://www.youtube.com/@EnglishwithLucy" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">English with Lucy — نطق وظلال</span><span class="res-type-badge yt">YT</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📖</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">قواعد أساسية — Duolingo أو English Grammar in Use</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_grammar" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📖</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">قواعد أساسية — Duolingo أو English Grammar in Use</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_grammar')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.duolingo.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Duolingo — للمبتدئين</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.cambridge.org/elt/catalogue/subject/custom/item3646120/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">English Grammar in Use (Murphy)</span><span class="res-type-badge paid">BOOK</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🗂️</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">مفردات: Anki flashcards — 20 كلمة جديدة يومياً</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_vocab" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🗂️</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">مفردات: Anki flashcards — 20 كلمة جديدة يومياً</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_vocab')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://apps.ankiweb.net" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Anki — spaced repetition</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.vocabulary.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Vocabulary.com</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -138,25 +310,55 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎤</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">تحدث لنفسك: صف يومك أو صور حولك بالإنجليزية</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_self-talk" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎤</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">تحدث لنفسك: صف يومك أو صور حولك بالإنجليزية</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_self-talk')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.youtube.com/watch?v=vn71vjYwHHM" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">How to Think in English — Speak English with Vanessa</span><span class="res-type-badge yt">YT</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📱</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">ELSA Speak — تدريب النطق وتصحيح الأخطاء</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_elsa" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📱</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">ELSA Speak — تدريب النطق وتصحيح الأخطاء</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_elsa')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://elsaspeak.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">ELSA Speak — AI pronunciation coach</span><span class="res-type-badge app">APP</span></a>
+              <a class="slot-resource" href="https://forvo.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Forvo — قاموس نطق حقيقي</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🌐</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">Italki أو Tandem — محادثة مع native speaker</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_conversation" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🌐</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">Italki أو Tandem — محادثة مع native speaker</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_conversation')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.italki.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Italki — مدرسين من $5/ساعة</span><span class="res-type-badge paid">PAID</span></a>
+              <a class="slot-resource" href="https://www.tandem.net" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Tandem — تبادل لغوي مجاني</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📚</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">مراجعة مفردات الأمس + جمل جديدة</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_vocab-review" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📚</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">مراجعة مفردات الأمس + جمل جديدة</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_vocab-review')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
           <div class="speaking-prompt" id="speakingPrompt-0">
             <div class="prompt-header">💬 موضوع الكلام الآن</div>
@@ -178,25 +380,46 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎬</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">مسلسل / فيلم بالترجمة الإنجليزية — Friends أو مستوى مشابه</span>
+          <div class="time-slot has-resources" data-task-key="p0_l0_series" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎬</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">مسلسل / فيلم بالترجمة الإنجليزية — Friends أو مستوى مشابه</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_series')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.netflix.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Netflix — اختر "English subtitles only"</span><span class="res-type-badge paid">PAID</span></a>
+              <a class="slot-resource" href="https://www.englishcentral.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">EnglishCentral — مقاطع مع تفاعل</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">✍️</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">كتابة paragraph قصير عن أي موضوع</span>
+          <div class="time-slot" data-task-key="p0_l0_writing" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">✍️</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">كتابة paragraph قصير عن أي موضوع</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_writing')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🔁</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">مراجعة شاملة للأسبوع + مراجعة Anki</span>
+          <div class="time-slot" data-task-key="p0_l0_review" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🔁</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">مراجعة شاملة للأسبوع + مراجعة Anki</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_review')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🎯</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">اختبار نفسك: اكتب 10 جمل من الذاكرة</span>
+          <div class="time-slot" data-task-key="p0_l0_self-test" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎯</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">اختبار نفسك: اكتب 10 جمل من الذاكرة</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p0_l0_self-test')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -245,20 +468,38 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎧</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">Podcasts متوسطة: The English We Speak / All Ears English</span>
+          <div class="time-slot has-resources" data-task-key="p1_l0_podcasts" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎧</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">Podcasts متوسطة: The English We Speak / All Ears English</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_podcasts')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 3</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.bbc.co.uk/programmes/p02pc9zn/episodes/downloads" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">The English We Speak — BBC</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.allearsenglish.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">All Ears English Podcast</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.6minuteenglish.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">6 Minute English — BBC</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📝</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">Dictation: اكتب ما تسمعه ثم قارن النص الأصلي</span>
+          <div class="time-slot" data-task-key="p1_l0_dictation" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📝</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">Dictation: اكتب ما تسمعه ثم قارن النص الأصلي</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_dictation')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🗣️</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">Shadowing مع بودكاست بدون نص — تدريب الأذن الحقيقي</span>
+          <div class="time-slot" data-task-key="p1_l0_shadowing" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🗣️</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">Shadowing مع بودكاست بدون نص — تدريب الأذن الحقيقي</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_shadowing')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -272,20 +513,37 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🌐</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">جلسة Italki مع مدرس متخصص — نقاش مواضيع حقيقية</span>
+          <div class="time-slot has-resources" data-task-key="p1_l0_italki" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🌐</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">جلسة Italki مع مدرس متخصص — نقاش مواضيع حقيقية</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_italki')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.italki.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Italki — Community Tutors</span><span class="res-type-badge paid">PAID</span></a>
+              <a class="slot-resource" href="https://www.tandem.net" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Tandem — تبادل لغوي</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🎤</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">Monologue: اختر موضوعاً وتكلم لمدة 3 دقائق متواصلة</span>
+          <div class="time-slot" data-task-key="p1_l0_monologue" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎤</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">Monologue: اختر موضوعاً وتكلم لمدة 3 دقائق متواصلة</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_monologue')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📱</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">ChatGPT أو Claude: ممارسة المحادثة النصية والصوتية</span>
+          <div class="time-slot" data-task-key="p1_l0_ai-chat" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📱</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">ChatGPT أو Claude: ممارسة المحادثة النصية والصوتية</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_ai-chat')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
           <div class="speaking-prompt" id="speakingPrompt-1">
             <div class="prompt-header">💬 موضوع الكلام الآن</div>
@@ -307,20 +565,42 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎬</span>
-            <span class="slot-time">90 دقيقة</span>
-            <span class="slot-text">TED Talks مع transcript: استمع، واكتب ملاحظات، ثم ناقش</span>
+          <div class="time-slot has-resources" data-task-key="p1_l0_ted" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎬</span>
+              <div class="slot-content"><span class="slot-time">90 دقيقة</span><span class="slot-text">TED Talks مع transcript: استمع، واكتب ملاحظات، ثم ناقش</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_ted')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.ted.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">TED.com — transcript كامل + ترجمة</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://ed.ted.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">TED-Ed — دروس أقصر وأوضح</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📰</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">قراءة BBC News أو The Guardian — 2 مقالة أسبوعياً</span>
+          <div class="time-slot has-resources" data-task-key="p1_l0_reading" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📰</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">قراءة BBC News أو The Guardian — 2 مقالة أسبوعياً</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_reading')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.bbc.com/news" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">BBC News — لغة واضحة</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.newsinlevels.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">News in Levels — ثلاثة مستويات</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🔁</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">مراجعة Anki + إضافة مفردات من TED</span>
+          <div class="time-slot" data-task-key="p1_l0_anki-review" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🔁</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">مراجعة Anki + إضافة مفردات من TED</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p1_l0_anki-review')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -369,20 +649,42 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎧</span>
-            <span class="slot-time">75 دقيقة</span>
-            <span class="slot-text">Podcasts للـ native: NPR, Stuff You Should Know, Freakonomics</span>
+          <div class="time-slot has-resources" data-task-key="p2_l0_native-podcasts" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎧</span>
+              <div class="slot-content"><span class="slot-time">75 دقيقة</span><span class="slot-text">Podcasts للـ native: NPR, Stuff You Should Know, Freakonomics</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_native-podcasts')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 3</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.npr.org/podcasts" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">NPR Podcasts</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://www.stuffyoushouldknow.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Stuff You Should Know</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://freakonomics.com/podcasts/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">Freakonomics Radio</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">✍️</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">Write a summary: لخّص ما سمعته في فقرة كاملة</span>
+          <div class="time-slot" data-task-key="p2_l0_summary" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">✍️</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">Write a summary: لخّص ما سمعته في فقرة كاملة</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_summary')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🗂️</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">Idioms & Phrasal Verbs: 5 جديدة مع جمل من السياق</span>
+          <div class="time-slot has-resources" data-task-key="p2_l0_idioms" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🗂️</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">Idioms & Phrasal Verbs: 5 جديدة مع جمل من السياق</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_idioms')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.youtube.com/@mmmEnglish_" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">mmmEnglish — Idioms & Phrasal Verbs</span><span class="res-type-badge yt">YT</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -396,20 +698,36 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">💬</span>
-            <span class="slot-time">75 دقيقة</span>
-            <span class="slot-text">نقاش مواضيع معقدة مع Italki: رأيك في قضية معينة</span>
+          <div class="time-slot has-resources" data-task-key="p2_l0_debate-italki" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">💬</span>
+              <div class="slot-content"><span class="slot-time">75 دقيقة</span><span class="slot-text">نقاش مواضيع معقدة مع Italki: رأيك في قضية معينة</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_debate-italki')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.italki.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Italki — Professional Teachers</span><span class="res-type-badge paid">PAID</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🎤</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">Debate with AI: استخدم Claude لمناقشة موضوع ساخن</span>
+          <div class="time-slot" data-task-key="p2_l0_ai-debate" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎤</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">Debate with AI: استخدم Claude لمناقشة موضوع ساخن</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_ai-debate')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📝</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">كتابة essay قصير بالحجج المستخدمة في النقاش</span>
+          <div class="time-slot" data-task-key="p2_l0_essay" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📝</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">كتابة essay قصير بالحجج المستخدمة في النقاش</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_essay')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
           <div class="speaking-prompt" id="speakingPrompt-2">
             <div class="prompt-header">💬 موضوع الكلام الآن</div>
@@ -431,20 +749,36 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">📖</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">رواية B2: The Old Man and the Sea / The Great Gatsby</span>
+          <div class="time-slot has-resources" data-task-key="p2_l0_novel" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📖</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">رواية B2: The Old Man and the Sea / The Great Gatsby</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_novel')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://elt.oup.com/catalogue/items/global/graded_readers/oxford_bookworms_library/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Oxford Bookworms — Level 4-5</span><span class="res-type-badge paid">BOOK</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🗣️</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">اقرأ فقرة بصوت عالٍ وسجّلها — راجع النطق</span>
+          <div class="time-slot" data-task-key="p2_l0_read-aloud" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🗣️</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">اقرأ فقرة بصوت عالٍ وسجّلها — راجع النطق</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_read-aloud')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🔁</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">مراجعة شاملة أسبوعية + اختبار نفسك</span>
+          <div class="time-slot" data-task-key="p2_l0_weekly-review" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🔁</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">مراجعة شاملة أسبوعية + اختبار نفسك</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p2_l0_weekly-review')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -493,20 +827,41 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎧</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">IELTS / Cambridge B2 Listening practice tests</span>
+          <div class="time-slot has-resources" data-task-key="p3_l0_exam-listening" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎧</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">IELTS / Cambridge B2 Listening practice tests</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_exam-listening')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 2</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.cambridgeenglish.org/exams-and-tests/first/preparation/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Cambridge B2 First — Official Practice</span><span class="res-type-badge free">FREE</span></a>
+              <a class="slot-resource" href="https://ieltsliz.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="res-name">IELTS Liz — Free Practice Tests</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📝</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">Writing tasks: Essays ومراجعتها مع AI أو مدرس</span>
+          <div class="time-slot has-resources" data-task-key="p3_l0_writing-task" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📝</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">Writing tasks: Essays ومراجعتها مع AI أو مدرس</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_writing-task')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.grammarly.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Grammarly — تصحيح وتحليل</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🔍</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">تحليل الأخطاء المتكررة وتصحيحها</span>
+          <div class="time-slot" data-task-key="p3_l0_error-analysis" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🔍</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">تحليل الأخطاء المتكررة وتصحيحها</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_error-analysis')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -520,20 +875,36 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎤</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">Mock speaking test — محاكاة كاملة لاختبار B2</span>
+          <div class="time-slot" data-task-key="p3_l0_mock-test" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎤</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">Mock speaking test — محاكاة كاملة لاختبار B2</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_mock-test')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🌐</span>
-            <span class="slot-time">60 دقيقة</span>
-            <span class="slot-text">جلسة مع مدرس متخصص في امتحانات IELTS/Cambridge</span>
+          <div class="time-slot has-resources" data-task-key="p3_l0_exam-tutor" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🌐</span>
+              <div class="slot-content"><span class="slot-time">60 دقيقة</span><span class="slot-text">جلسة مع مدرس متخصص في امتحانات IELTS/Cambridge</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_exam-tutor')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.italki.com" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Italki — IELTS/Cambridge specialists</span><span class="res-type-badge paid">PAID</span></a>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">📊</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">مراجعة نقاط الضعف في الكلام</span>
+          <div class="time-slot" data-task-key="p3_l0_speaking-review" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">📊</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">مراجعة نقاط الضعف في الكلام</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_speaking-review')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
           <div class="speaking-prompt" id="speakingPrompt-3">
             <div class="prompt-header">💬 موضوع الكلام الآن</div>
@@ -555,20 +926,36 @@
           </div>
         </div>
         <div class="day-body">
-          <div class="time-slot">
-            <span class="slot-emoji">🎬</span>
-            <span class="slot-time">90 دقيقة</span>
-            <span class="slot-text">محتوى native بدون ترجمة نهائياً — يوتيوب، podcasts، أفلام</span>
+          <div class="time-slot" data-task-key="p3_l0_native-immersion" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎬</span>
+              <div class="slot-content"><span class="slot-time">90 دقيقة</span><span class="slot-text">محتوى native بدون ترجمة نهائياً — يوتيوب، podcasts، أفلام</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_native-immersion')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🔁</span>
-            <span class="slot-time">45 دقيقة</span>
-            <span class="slot-text">مراجعة شاملة لكل مفردات الـ 12 شهر</span>
+          <div class="time-slot" data-task-key="p3_l0_full-review" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🔁</span>
+              <div class="slot-content"><span class="slot-time">45 دقيقة</span><span class="slot-text">مراجعة شاملة لكل مفردات الـ 12 شهر</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_full-review')" title="مكتمل"><span class="check-icon">○</span></button>
+              </div>
+            </div>
           </div>
-          <div class="time-slot">
-            <span class="slot-emoji">🎯</span>
-            <span class="slot-time">30 دقيقة</span>
-            <span class="slot-text">تقييم نفسك بـ Cambridge B2 sample test</span>
+          <div class="time-slot has-resources" data-task-key="p3_l0_cambridge-test" onclick="handleSlotClick(this,event)">
+            <div class="slot-main-row">
+              <span class="slot-emoji">🎯</span>
+              <div class="slot-content"><span class="slot-time">30 دقيقة</span><span class="slot-text">تقييم نفسك بـ Cambridge B2 sample test</span></div>
+              <div class="slot-actions">
+                <button class="slot-check" onclick="toggleLevelTask(event,'p3_l0_cambridge-test')" title="مكتمل"><span class="check-icon">○</span></button>
+                <button class="slot-res-btn" onclick="toggleSlotResources(event,this)">📎 1</button>
+              </div>
+            </div>
+            <div class="slot-resources-panel" hidden>
+              <a class="slot-resource recommended" href="https://www.cambridgeenglish.org/exams-and-tests/first/preparation/" target="_blank" rel="noopener" onclick="event.stopPropagation()"><span class="rec-badge">★ مُوصى به</span><span class="res-name">Cambridge B2 First — Sample Tests</span><span class="res-type-badge free">FREE</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -873,6 +1260,10 @@
     <div class="section-title">📋 سجل الجلسات</div>
     <div id="logEntries"></div>
 
+    <!-- Heatmap -->
+    <div class="section-title">📅 نشاطك خلال السنة</div>
+    <div id="activityHeatmap" class="activity-heatmap"></div>
+
     <!-- Data Management -->
     <div class="section-title">💾 إدارة البيانات</div>
     <div class="data-management">
@@ -883,6 +1274,71 @@
       </label>
       <button class="data-btn danger" onclick="confirmReset()">🗑️ مسح كل البيانات</button>
     </div>
+  </div>
+
+  <!-- SHADOWING MODE -->
+  <div class="phase" id="phase-6">
+    <div class="phase-header">
+      <div class="phase-tag p2">SHADOWING MODE</div>
+      <div class="phase-title">تدريب الـ Shadowing</div>
+      <p class="phase-desc">أقوى تقنية للطلاقة — استمع وكرر بنفس الإيقاع والنبرة</p>
+    </div>
+
+    <div class="shadow-input-row">
+      <input type="url" id="shadowYoutubeUrl" placeholder="الصق رابط YouTube هنا..." />
+      <button class="shadow-load-btn" onclick="loadShadowVideo()">تحميل ▶</button>
+    </div>
+
+    <div class="shadow-workspace">
+      <div class="shadow-video-pane">
+        <div id="shadowPlayerContainer">
+          <div class="shadow-placeholder">الصق رابط YouTube لبدء الـ Shadowing</div>
+        </div>
+      </div>
+      <div class="shadow-transcript-pane">
+        <textarea id="shadowTranscript" placeholder="الصق transcript الحلقة هنا (اختياري)..."></textarea>
+        <div class="shadow-controls">
+          <button id="shadowToggleText" onclick="toggleTranscriptVisibility()">إخفاء النص — Shadow Mode</button>
+          <button id="shadowRecord" onclick="toggleShadowRecording()">● تسجيل صوتك</button>
+        </div>
+        <audio id="shadowPlayback" controls style="display:none"></audio>
+      </div>
+    </div>
+
+    <div class="section-title">🎯 مقترحات جاهزة للـ Shadowing</div>
+    <div id="shadowExamples"></div>
+  </div>
+
+  <!-- SPEAKING JOURNAL + PRONUNCIATION RADAR -->
+  <div class="phase" id="phase-7">
+    <div class="phase-header">
+      <div class="phase-tag p3">SPEAKING PRACTICE</div>
+      <div class="phase-title">ممارسة الكلام والنطق</div>
+      <p class="phase-desc">سجّل كلامك، قيّم نفسك، واتقن الأصوات الصعبة</p>
+    </div>
+
+    <div class="section-title">📔 سجل الكلام الأسبوعي</div>
+    <div class="speaking-journal">
+      <div class="journal-topic-display" id="journalTopic">اضغط لاختيار موضوع...</div>
+      <div class="journal-controls">
+        <button onclick="getJournalTopic()">موضوع جديد 🔀</button>
+        <button id="journalRecordBtn" onclick="toggleJournalRecord()">● ابدأ التسجيل</button>
+        <div class="journal-timer-display" id="journalTimerDisplay">0:00</div>
+      </div>
+      <audio id="journalPlayback" controls style="display:none"></audio>
+      <div class="journal-rubric" id="journalRubric" hidden>
+        <div class="rubric-title">قيّم أداءك:</div>
+        <div class="rubric-row"><span class="rubric-label">Fluency</span><div class="rubric-stars" id="stars-fluency" data-dim="fluency"></div></div>
+        <div class="rubric-row"><span class="rubric-label">Vocabulary</span><div class="rubric-stars" id="stars-vocab" data-dim="vocab"></div></div>
+        <div class="rubric-row"><span class="rubric-label">Grammar</span><div class="rubric-stars" id="stars-grammar" data-dim="grammar"></div></div>
+        <div class="rubric-row"><span class="rubric-label">Pronunciation</span><div class="rubric-stars" id="stars-pronunciation" data-dim="pronunciation"></div></div>
+        <button class="rubric-save" onclick="saveJournalEntry()">حفظ التقييم ✅</button>
+      </div>
+      <div id="journalChart"></div>
+    </div>
+
+    <div class="section-title">🔤 خريطة النطق — الأصوات الصعبة</div>
+    <div class="phoneme-grid" id="phonemeGrid"></div>
   </div>
 
 </div>
@@ -911,10 +1367,12 @@
 </div>
 
 <script src="js/milestones.js"></script>
-<script src="js/tracker.js"></script>
+<script src="js/progress.js"></script>
 <script src="js/timer.js"></script>
 <script src="js/prompts.js"></script>
 <script src="js/log.js"></script>
+<script src="js/shadowing.js"></script>
+<script src="js/journal.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

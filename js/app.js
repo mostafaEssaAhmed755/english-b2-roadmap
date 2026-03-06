@@ -19,22 +19,17 @@ function showPhase(index) {
   currentPhase = index;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  renderWeeklyTracker();
-
-  const savedDay = localStorage.getItem('activeStudyDay');
-  if (savedDay !== null && index < 4) {
-    const phaseEl = document.getElementById('phase-' + index);
-    if (phaseEl) {
-      highlightDayCards(parseInt(savedDay), phaseEl.querySelectorAll('.day-card'));
-      phaseEl.querySelectorAll('.day-sel-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', i === parseInt(savedDay));
-      });
-    }
-  }
-
   if (index === 5) {
     renderActivityLog();
     renderAnalytics();
+    renderHeatmap();
+  }
+  if (index === 6) {
+    renderShadowExamples();
+  }
+  if (index === 7) {
+    renderPhonemeGrid();
+    renderJournalChart();
   }
 }
 
@@ -64,13 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // All modules
   loadMilestones();
-  renderWeeklyTracker();
   renderActivityLog();
   renderAnalytics();
+  renderHeatmap();
   for (let i = 0; i < 4; i++) refreshPrompt(i);
 
   // Make time-slots clickable → load duration into timer
-  document.querySelectorAll('.time-slot').forEach(slot => {
+  // (Handled by handleSlotClick for new slots; legacy slots without data-task-key still use direct listener)
+  document.querySelectorAll('.time-slot:not([data-task-key])').forEach(slot => {
     const timeEl = slot.querySelector('.slot-time');
     const textEl = slot.querySelector('.slot-text');
     if (timeEl && textEl) {
@@ -84,15 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Restore day highlight on phase-0
-  const savedDay = localStorage.getItem('activeStudyDay');
-  if (savedDay !== null) {
-    const phaseEl = document.getElementById('phase-0');
-    if (phaseEl) {
-      highlightDayCards(parseInt(savedDay), phaseEl.querySelectorAll('.day-card'));
-      phaseEl.querySelectorAll('.day-sel-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', i === parseInt(savedDay));
-      });
-    }
-  }
+  // Init phase progress map
+  renderPhaseProgressMap();
+  loadLevelTaskStates();
 });

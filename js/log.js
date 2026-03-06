@@ -105,6 +105,61 @@ function renderAnalytics() {
   }
 }
 
+// ─── Activity Heatmap ─────────────────────────────────────
+
+function renderHeatmap() {
+  const container = document.getElementById('activityHeatmap');
+  if (!container) return;
+  const log = getActivityLog();
+
+  // Build daily totals map
+  const dayMap = {};
+  log.forEach(e => {
+    dayMap[e.date] = (dayMap[e.date] || 0) + e.duration;
+  });
+
+  const today = new Date();
+  const cells = [];
+  // 52 weeks × 7 days = 364 days back
+  for (let i = 363; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const key = d.toISOString().slice(0, 10);
+    const mins = dayMap[key] || 0;
+    let level = 0;
+    if (mins > 0)   level = 1;
+    if (mins >= 30) level = 2;
+    if (mins >= 60) level = 3;
+    if (mins >= 90) level = 4;
+    cells.push({ key, mins, level });
+  }
+
+  // Render as grid of week columns
+  const weeks = [];
+  for (let w = 0; w < 52; w++) {
+    weeks.push(cells.slice(w * 7, w * 7 + 7));
+  }
+
+  container.innerHTML = `
+    <div class="heatmap-grid">
+      ${weeks.map(week =>
+        `<div class="heatmap-col">${week.map(c =>
+          `<div class="heat-cell level-${c.level}" title="${c.key}: ${c.mins} دقيقة"></div>`
+        ).join('')}</div>`
+      ).join('')}
+    </div>
+    <div class="heatmap-legend">
+      <span>أقل</span>
+      <div class="heat-cell level-0"></div>
+      <div class="heat-cell level-1"></div>
+      <div class="heat-cell level-2"></div>
+      <div class="heat-cell level-3"></div>
+      <div class="heat-cell level-4"></div>
+      <span>أكثر</span>
+    </div>
+  `;
+}
+
 // ─── Data Backup ──────────────────────────────────────────
 
 function exportData() {

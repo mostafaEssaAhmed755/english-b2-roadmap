@@ -20,6 +20,20 @@
     --muted: #64748b;
   }
 
+  [data-theme="light"] {
+    --bg: #f0f4f8;
+    --surface: #ffffff;
+    --card: #e8edf3;
+    --border: #c5d0dc;
+    --text: #1a202c;
+    --muted: #718096;
+  }
+  [data-theme="light"] body::before {
+    background-image:
+      linear-gradient(rgba(0,100,180,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,100,180,0.04) 1px, transparent 1px);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -121,7 +135,7 @@
   /* Progress tracker */
   .progress-section {
     max-width: 900px;
-    margin: 0 auto 60px;
+    margin: 0 auto 24px;
     padding: 0 20px;
     position: relative;
     z-index: 1;
@@ -307,11 +321,12 @@
     border-radius: 10px;
     border-right: 3px solid transparent;
     transition: border-color 0.2s;
+    cursor: pointer;
   }
 
   .time-slot:last-child { margin-bottom: 0; }
 
-  .time-slot:hover { border-right-color: var(--accent); }
+  .time-slot:hover { border-right-color: var(--accent); background: rgba(0,212,255,0.05); }
 
   .slot-time {
     font-family: 'Space Mono', monospace;
@@ -420,6 +435,10 @@
   .res-badge.paid { background: rgba(245,158,11,0.2); color: var(--accent3); }
   .res-badge.yt { background: rgba(239,68,68,0.2); color: var(--red); }
 
+  /* Resource links */
+  .resource-link { color: var(--accent); text-decoration: none; }
+  .resource-link:hover { text-decoration: underline; }
+
   /* Tips box */
   .tips-box {
     background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.05));
@@ -482,6 +501,7 @@
     padding: 12px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
     cursor: pointer;
+    min-height: 48px;
   }
 
   .milestone-item:last-child { border-bottom: none; }
@@ -578,6 +598,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    min-height: 48px;
   }
 
   .nav-btn:hover {
@@ -595,9 +616,138 @@
     border-color: var(--accent);
     color: var(--accent);
   }
+
+  /* Theme toggle */
+  #themeToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  #themeToggle:hover { border-color: var(--accent); transform: scale(1.1); }
+
+  /* Day Selector */
+  .day-selector { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .day-selector-label { color: var(--muted); font-size: 14px; }
+  .day-sel-btn { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; font-family: 'Cairo', sans-serif; font-size: 14px; transition: all 0.2s; }
+  .day-sel-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,0.08); }
+  .day-card.day-active { border-color: var(--accent) !important; box-shadow: 0 0 24px rgba(0,212,255,0.15); }
+  .day-card.day-inactive { opacity: 0.4; }
+
+  /* Weekly Tracker */
+  .weekly-tracker { max-width: 900px; margin: 0 auto 24px; padding: 16px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; position: relative; z-index: 1; }
+  .tracker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .tracker-label { font-size: 13px; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .tracker-streak { font-size: 13px; color: var(--accent); font-family: 'Space Mono', monospace; }
+  .tracker-days { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .day-dot { width: 52px; height: 60px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-family: 'Cairo', sans-serif; font-size: 12px; transition: all 0.2s; }
+  .day-dot:hover { border-color: var(--accent); color: var(--accent); }
+  .day-dot.studied { background: rgba(16,185,129,0.15); border-color: var(--green); color: var(--green); }
+  .day-dot.today { border-color: var(--accent); box-shadow: 0 0 8px rgba(0,212,255,0.2); }
+  .day-dot .day-num { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.7; }
+
+  /* Speaking Prompt */
+  .speaking-prompt { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(0,212,255,0.05)); border: 1px solid rgba(124,58,237,0.3); border-radius: 12px; padding: 16px; margin-top: 12px; }
+  .prompt-header { font-size: 12px; color: var(--accent2); font-family: 'Space Mono', monospace; margin-bottom: 10px; }
+  .prompt-text { font-size: 15px; color: var(--text); line-height: 1.6; margin-bottom: 12px; min-height: 48px; }
+  .prompt-actions { display: flex; gap: 8px; }
+  .prompt-actions button { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; font-family: 'Cairo', sans-serif; font-size: 13px; transition: all 0.2s; }
+  .prompt-actions button:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* Timer Widget */
+  .timer-widget { position: fixed; bottom: 24px; left: 24px; z-index: 999; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px; width: 220px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: all 0.3s; }
+  .timer-widget.timer-minimized .timer-body { display: none; }
+  .timer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .timer-title { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); }
+  .timer-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 0 4px; }
+  .timer-display { font-family: 'Space Mono', monospace; font-size: 36px; text-align: center; color: var(--accent); margin-bottom: 6px; }
+  .timer-display.timer-urgent { color: var(--red); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .timer-activity { font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 12px; min-height: 28px; }
+  .timer-controls { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
+  .timer-controls button { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; font-size: 14px; transition: all 0.2s; }
+  .timer-controls button:hover { border-color: var(--accent); color: var(--accent); }
+  .timer-presets { display: flex; gap: 6px; justify-content: center; }
+  .timer-presets button { padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; transition: all 0.2s; }
+  .timer-presets button:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Activity Log */
+  .analytics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 600px) { .analytics-grid { grid-template-columns: repeat(2, 1fr); } }
+  .analytics-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+  .analytics-val { font-family: 'Space Mono', monospace; font-size: 28px; color: var(--accent); margin-bottom: 6px; }
+  .analytics-lbl { font-size: 12px; color: var(--muted); }
+  .skill-bar-container { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+  .skill-bar-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
+  .skill-bar-track { height: 20px; border-radius: 10px; overflow: hidden; display: flex; background: var(--card); }
+  .skill-bar-track .bar-segment { height: 100%; transition: width 0.5s ease; }
+  .bar-segment.listening { background: var(--accent); }
+  .bar-segment.speaking { background: var(--accent2); }
+  .bar-segment.reading { background: var(--green); }
+  .bar-segment.vocab { background: var(--accent3); }
+  .skill-bar-legend { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+  .legend-item { font-size: 12px; color: var(--muted); }
+  .legend-item.listening { color: var(--accent); }
+  .legend-item.speaking { color: var(--accent2); }
+  .legend-item.reading { color: var(--green); }
+  .legend-item.vocab { color: var(--accent3); }
+  .log-form { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+  .log-form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+  .log-form select, .log-form input, .log-form textarea { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-family: 'Cairo', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .log-form-row select { flex: 1; }
+  .log-form-row input { flex: 1; }
+  .log-form select:focus, .log-form input:focus, .log-form textarea:focus { border-color: var(--accent); }
+  .log-form textarea { min-height: 80px; resize: vertical; margin-bottom: 12px; }
+  .log-submit { width: 100%; padding: 12px; border-radius: 10px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; }
+  .log-submit:hover { opacity: 0.9; }
+  .log-entry { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start; }
+  .log-entry-skill { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .log-entry-skill.listening { background: rgba(0,212,255,0.15); }
+  .log-entry-skill.speaking { background: rgba(124,58,237,0.15); }
+  .log-entry-skill.reading { background: rgba(16,185,129,0.15); }
+  .log-entry-skill.vocab { background: rgba(245,158,11,0.15); }
+  .log-entry-body { flex: 1; }
+  .log-entry-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .log-entry-resource { font-size: 15px; font-weight: 600; }
+  .log-entry-meta { font-size: 12px; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .log-entry-note { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .log-entry-delete { background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; font-size: 16px; opacity: 0; transition: opacity 0.2s; }
+  .log-entry:hover .log-entry-delete { opacity: 1; }
+  .data-management { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .data-btn { padding: 10px 20px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; font-family: 'Cairo', sans-serif; font-size: 14px; transition: all 0.2s; }
+  .data-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .data-btn.danger { border-color: var(--red); color: var(--red); }
+  .data-btn.danger:hover { background: rgba(239,68,68,0.1); }
+  .import-label { display: inline-block; cursor: pointer; }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .tabs { overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { white-space: nowrap; flex-shrink: 0; min-height: 44px; }
+    .milestone-item { min-height: 48px; }
+    .nav-btn { min-height: 48px; }
+    .log-form-row { flex-direction: column; }
+    #timerWidget { width: 180px; bottom: 12px; left: 12px; }
+    .timer-display { font-size: 28px; }
+  }
 </style>
 </head>
 <body>
+
+<button id="themeToggle" onclick="toggleTheme()" title="تبديل الثيم">🌙</button>
 
 <div class="hero">
   <div class="hero-badge">ENGLISH ROADMAP • B2 TARGET</div>
@@ -648,12 +798,21 @@
   </div>
 </div>
 
+<div class="weekly-tracker" id="weeklyTracker">
+  <div class="tracker-header">
+    <span class="tracker-label">أيام الدراسة هذا الأسبوع</span>
+    <span class="tracker-streak" id="streakDisplay">سلسلة: 0 أسبوع</span>
+  </div>
+  <div class="tracker-days" id="trackerDays"></div>
+</div>
+
 <div class="tabs">
   <button class="tab active" onclick="showPhase(0)">📍 المرحلة الأولى</button>
   <button class="tab" onclick="showPhase(1)">🚀 المرحلة الثانية</button>
   <button class="tab" onclick="showPhase(2)">⚡ المرحلة الثالثة</button>
   <button class="tab" onclick="showPhase(3)">🎯 المرحلة الرابعة</button>
   <button class="tab" onclick="showPhase(4)">📚 المصادر الكاملة</button>
+  <button class="tab" onclick="showPhase(5)">📓 سجل النشاط</button>
 </div>
 
 <div class="content">
@@ -667,6 +826,14 @@
     </div>
 
     <div class="section-title">📅 جدول الأسبوع</div>
+
+    <div class="day-selector">
+      <span class="day-selector-label">اختر يومك اليوم:</span>
+      <button class="day-sel-btn active" onclick="selectDay(0, this)">اليوم الأول</button>
+      <button class="day-sel-btn" onclick="selectDay(1, this)">اليوم الثاني</button>
+      <button class="day-sel-btn" onclick="selectDay(2, this)">اليوم الثالث</button>
+    </div>
+
     <div class="week-grid">
       <div class="day-card">
         <div class="day-header">
@@ -729,6 +896,14 @@
             <span class="slot-time">30 دقيقة</span>
             <span class="slot-text">مراجعة مفردات الأمس + جمل جديدة</span>
           </div>
+          <div class="speaking-prompt" id="speakingPrompt-0">
+            <div class="prompt-header">💬 موضوع الكلام الآن</div>
+            <div class="prompt-text" id="promptText-0">اضغط لاختيار موضوع</div>
+            <div class="prompt-actions">
+              <button onclick="refreshPrompt(0)">موضوع آخر 🔀</button>
+              <button onclick="setTimer(120, 'تحدث لمدة دقيقتين'); startTimer();">⏱ دقيقتان</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -790,6 +965,14 @@
     </div>
 
     <div class="section-title">📅 جدول الأسبوع</div>
+
+    <div class="day-selector">
+      <span class="day-selector-label">اختر يومك اليوم:</span>
+      <button class="day-sel-btn active" onclick="selectDay(0, this)">اليوم الأول</button>
+      <button class="day-sel-btn" onclick="selectDay(1, this)">اليوم الثاني</button>
+      <button class="day-sel-btn" onclick="selectDay(2, this)">اليوم الثالث</button>
+    </div>
+
     <div class="week-grid">
       <div class="day-card">
         <div class="day-header">
@@ -841,6 +1024,14 @@
             <span class="slot-emoji">📱</span>
             <span class="slot-time">30 دقيقة</span>
             <span class="slot-text">ChatGPT أو Claude: ممارسة المحادثة النصية والصوتية</span>
+          </div>
+          <div class="speaking-prompt" id="speakingPrompt-1">
+            <div class="prompt-header">💬 موضوع الكلام الآن</div>
+            <div class="prompt-text" id="promptText-1">اضغط لاختيار موضوع</div>
+            <div class="prompt-actions">
+              <button onclick="refreshPrompt(1)">موضوع آخر 🔀</button>
+              <button onclick="setTimer(120, 'تحدث لمدة دقيقتين'); startTimer();">⏱ دقيقتان</button>
+            </div>
           </div>
         </div>
       </div>
@@ -898,6 +1089,14 @@
     </div>
 
     <div class="section-title">📅 جدول الأسبوع</div>
+
+    <div class="day-selector">
+      <span class="day-selector-label">اختر يومك اليوم:</span>
+      <button class="day-sel-btn active" onclick="selectDay(0, this)">اليوم الأول</button>
+      <button class="day-sel-btn" onclick="selectDay(1, this)">اليوم الثاني</button>
+      <button class="day-sel-btn" onclick="selectDay(2, this)">اليوم الثالث</button>
+    </div>
+
     <div class="week-grid">
       <div class="day-card">
         <div class="day-header">
@@ -949,6 +1148,14 @@
             <span class="slot-emoji">📝</span>
             <span class="slot-time">30 دقيقة</span>
             <span class="slot-text">كتابة essay قصير بالحجج المستخدمة في النقاش</span>
+          </div>
+          <div class="speaking-prompt" id="speakingPrompt-2">
+            <div class="prompt-header">💬 موضوع الكلام الآن</div>
+            <div class="prompt-text" id="promptText-2">اضغط لاختيار موضوع</div>
+            <div class="prompt-actions">
+              <button onclick="refreshPrompt(2)">موضوع آخر 🔀</button>
+              <button onclick="setTimer(120, 'تحدث لمدة دقيقتين'); startTimer();">⏱ دقيقتان</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1006,6 +1213,14 @@
     </div>
 
     <div class="section-title">📅 جدول التحضير للامتحان</div>
+
+    <div class="day-selector">
+      <span class="day-selector-label">اختر يومك اليوم:</span>
+      <button class="day-sel-btn active" onclick="selectDay(0, this)">اليوم الأول</button>
+      <button class="day-sel-btn" onclick="selectDay(1, this)">اليوم الثاني</button>
+      <button class="day-sel-btn" onclick="selectDay(2, this)">اليوم الثالث</button>
+    </div>
+
     <div class="week-grid">
       <div class="day-card">
         <div class="day-header">
@@ -1057,6 +1272,14 @@
             <span class="slot-emoji">📊</span>
             <span class="slot-time">30 دقيقة</span>
             <span class="slot-text">مراجعة نقاط الضعف في الكلام</span>
+          </div>
+          <div class="speaking-prompt" id="speakingPrompt-3">
+            <div class="prompt-header">💬 موضوع الكلام الآن</div>
+            <div class="prompt-text" id="promptText-3">اضغط لاختيار موضوع</div>
+            <div class="prompt-actions">
+              <button onclick="refreshPrompt(3)">موضوع آخر 🔀</button>
+              <button onclick="setTimer(120, 'تحدث لمدة دقيقتين'); startTimer();">⏱ دقيقتان</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1126,27 +1349,27 @@
         <ul class="resource-list">
           <li class="resource-item">
             <span class="res-badge yt">YT</span>
-            <span>English with Lucy — شرح واضح وبطيء للمبتدئين</span>
+            <a href="https://www.youtube.com/@EnglishwithLucy" class="resource-link" target="_blank" rel="noopener">English with Lucy</a> — شرح واضح وبطيء للمبتدئين
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>BBC 6 Minute English — ممتاز لتنمية المفردات مع الصوت</span>
+            <a href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english" class="resource-link" target="_blank" rel="noopener">BBC 6 Minute English</a> — ممتاز لتنمية المفردات مع الصوت
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>All Ears English Podcast — B1-B2 بأسلوب طبيعي</span>
+            <a href="https://www.allearsenglish.com" class="resource-link" target="_blank" rel="noopener">All Ears English Podcast</a> — B1-B2 بأسلوب طبيعي
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>TED Talks — مواضيع متنوعة مع transcript كامل</span>
+            <a href="https://www.ted.com" class="resource-link" target="_blank" rel="noopener">TED Talks</a> — مواضيع متنوعة مع transcript كامل
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>NPR Podcasts — للمستوى المتقدم B2+</span>
+            <a href="https://www.npr.org" class="resource-link" target="_blank" rel="noopener">NPR Podcasts</a> — للمستوى المتقدم B2+
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>Elllo.org — تمارين استماع مع نصوص متدرجة المستوى</span>
+            <a href="https://www.elllo.org" class="resource-link" target="_blank" rel="noopener">Elllo.org</a> — تمارين استماع مع نصوص متدرجة المستوى
           </li>
         </ul>
       </div>
@@ -1163,15 +1386,15 @@
         <ul class="resource-list">
           <li class="resource-item">
             <span class="res-badge paid">PAID</span>
-            <span>Italki — محادثة مع مدرسين حقيقيين (من $5 للساعة)</span>
+            <a href="https://www.italki.com" class="resource-link" target="_blank" rel="noopener">Italki</a> — محادثة مع مدرسين حقيقيين (من $5 للساعة)
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>Tandem / HelloTalk — تبادل لغوي مع متحدثين أصليين</span>
+            <a href="https://www.tandem.net" class="resource-link" target="_blank" rel="noopener">Tandem</a> / HelloTalk — تبادل لغوي مع متحدثين أصليين
           </li>
           <li class="resource-item">
             <span class="res-badge app">APP</span>
-            <span>ELSA Speak — AI لتصحيح النطق وتحليل الصوت</span>
+            <a href="https://elsaspeak.com" class="resource-link" target="_blank" rel="noopener">ELSA Speak</a> — AI لتصحيح النطق وتحليل الصوت
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
@@ -1179,7 +1402,7 @@
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>Speak to AI (Claude/ChatGPT) — محادثة حرة بدون خجل</span>
+            Speak to AI (<a href="https://chat.openai.com" class="resource-link" target="_blank" rel="noopener">ChatGPT</a>) — محادثة حرة بدون خجل
           </li>
           <li class="resource-item">
             <span class="res-badge yt">YT</span>
@@ -1200,15 +1423,15 @@
         <ul class="resource-list">
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>Anki — بطاقات مراجعة ذكية بخوارزمية spaced repetition</span>
+            <a href="https://apps.ankiweb.net" class="resource-link" target="_blank" rel="noopener">Anki</a> — بطاقات مراجعة ذكية بخوارزمية spaced repetition
           </li>
           <li class="resource-item">
             <span class="res-badge app">APP</span>
-            <span>Duolingo — للمبتدئين لبناء قاعدة يومية</span>
+            <a href="https://www.duolingo.com" class="resource-link" target="_blank" rel="noopener">Duolingo</a> — للمبتدئين لبناء قاعدة يومية
           </li>
           <li class="resource-item">
             <span class="res-badge paid">BOOK</span>
-            <span>English Grammar in Use (Murphy) — المرجع الذهبي للقواعد</span>
+            <a href="https://www.cambridge.org/elt/catalogue/subject/custom/item3646120/" class="resource-link" target="_blank" rel="noopener">English Grammar in Use (Murphy)</a> — المرجع الذهبي للقواعد
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
@@ -1233,23 +1456,23 @@
         <ul class="resource-list">
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>BBC News / The Guardian — أخبار حقيقية بلغة واضحة</span>
+            <a href="https://www.bbc.com/news" class="resource-link" target="_blank" rel="noopener">BBC News</a> / <a href="https://www.theguardian.com" class="resource-link" target="_blank" rel="noopener">The Guardian</a> — أخبار حقيقية بلغة واضحة
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>News in Levels — نفس الخبر بثلاثة مستويات</span>
+            <a href="https://www.newsinlevels.com" class="resource-link" target="_blank" rel="noopener">News in Levels</a> — نفس الخبر بثلاثة مستويات
           </li>
           <li class="resource-item">
             <span class="res-badge paid">BOOK</span>
-            <span>Oxford Bookworms Library — روايات مبسطة متدرجة</span>
+            <a href="https://elt.oup.com/catalogue/items/global/graded_readers/oxford_bookworms_library/" class="resource-link" target="_blank" rel="noopener">Oxford Bookworms Library</a> — روايات مبسطة متدرجة
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>Grammarly — تصحيح الكتابة وفهم الأخطاء</span>
+            <a href="https://www.grammarly.com" class="resource-link" target="_blank" rel="noopener">Grammarly</a> — تصحيح الكتابة وفهم الأخطاء
           </li>
           <li class="resource-item">
             <span class="res-badge free">FREE</span>
-            <span>Lang-8 / Italki Community — تصحيح الكتابة من native speakers</span>
+            <a href="https://www.italki.com/community" class="resource-link" target="_blank" rel="noopener">Lang-8 / Italki Community</a> — تصحيح الكتابة من native speakers
           </li>
         </ul>
       </div>
@@ -1259,56 +1482,56 @@
     <div class="section-title">✅ Milestones — تتبع تقدمك</div>
     <div class="milestones">
       <h3>🏁 اضغط على كل milestone عند تحقيقه</h3>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="anki-500" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">أتمم 500 كلمة في Anki بدون أخطاء</div>
           <div class="milestone-phase">المرحلة الأولى</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="conversation-15" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">أجري محادثة 15 دقيقة بدون توقف</div>
           <div class="milestone-phase">المرحلة الأولى</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="bbc-no-translate" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">فهم BBC 6 Minute English بدون ترجمة</div>
           <div class="milestone-phase">المرحلة الثانية</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="essay-200" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">اكتب essay من 200 كلمة بأخطاء قليلة</div>
           <div class="milestone-phase">المرحلة الثانية</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="ted-no-transcript" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">فهم TED Talk كاملة بدون transcript</div>
           <div class="milestone-phase">المرحلة الثالثة</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="discussion-10" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">ناقش موضوعاً معقداً لمدة 10 دقائق</div>
           <div class="milestone-phase">المرحلة الثالثة</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="series-80pct" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">فهم مسلسل بدون ترجمة 80% على الأقل</div>
           <div class="milestone-phase">المرحلة الرابعة</div>
         </div>
       </div>
-      <div class="milestone-item" onclick="toggleMilestone(this)">
+      <div class="milestone-item" data-id="cambridge-b2" onclick="toggleMilestone(this)">
         <div class="milestone-check"></div>
         <div>
           <div class="milestone-text">اجتز Cambridge B2 First أو IELTS 6.0+</div>
@@ -1323,11 +1546,121 @@
     </div>
   </div>
 
+  <!-- ACTIVITY LOG -->
+  <div class="phase" id="phase-5">
+    <div class="phase-header">
+      <div class="phase-tag p2">ACTIVITY LOG</div>
+      <div class="phase-title">سجل الاستماع والكلام</div>
+      <p class="phase-desc">سجّل كل جلسة دراسية — الاستماع والكلام — لترى تقدمك الحقيقي على مدار الأشهر.</p>
+    </div>
+
+    <!-- Analytics -->
+    <div class="section-title">📊 إحصائياتك التراكمية</div>
+    <div class="analytics-grid" id="analyticsGrid">
+      <div class="analytics-card">
+        <div class="analytics-val" id="totalListening">0</div>
+        <div class="analytics-lbl">ساعات الاستماع</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-val" id="totalSpeaking">0</div>
+        <div class="analytics-lbl">ساعات الكلام</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-val" id="totalSessions">0</div>
+        <div class="analytics-lbl">إجمالي الجلسات</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-val" id="lsPct">0%</div>
+        <div class="analytics-lbl">نسبة الاستماع+كلام</div>
+      </div>
+    </div>
+
+    <!-- Skill Bar -->
+    <div class="skill-bar-container" id="skillBarContainer" style="display:none">
+      <div class="skill-bar-label">
+        <span>توزيع المهارات (آخر 30 يوم)</span>
+        <span id="targetWarning" style="color:var(--red);display:none">⚠️ الاستماع+كلام أقل من 50% — أعِد التوازن</span>
+      </div>
+      <div class="skill-bar-track" id="skillBar"></div>
+      <div class="skill-bar-legend">
+        <span class="legend-item listening">🎧 استماع</span>
+        <span class="legend-item speaking">🗣️ كلام</span>
+        <span class="legend-item reading">📖 قراءة</span>
+        <span class="legend-item vocab">🗂️ مفردات</span>
+      </div>
+    </div>
+
+    <!-- Log Form -->
+    <div class="section-title">➕ تسجيل جلسة جديدة</div>
+    <div class="log-form">
+      <div class="log-form-row">
+        <select id="logSkill">
+          <option value="listening">🎧 استماع</option>
+          <option value="speaking">🗣️ كلام</option>
+          <option value="reading">📖 قراءة</option>
+          <option value="vocab">🗂️ مفردات/قواعد</option>
+        </select>
+        <input id="logDuration" type="number" placeholder="المدة (دقائق)" min="1" max="300" />
+      </div>
+      <input id="logResource" type="text" placeholder="المصدر (مثال: BBC 6 Minute English, Italki...)" />
+      <textarea id="logNote" placeholder="ملاحظة: ماذا تعلمت؟ كلمات جديدة؟ موضوع ناقشته؟ (اختياري)"></textarea>
+      <button class="log-submit" onclick="addLogEntry()">✅ حفظ الجلسة</button>
+    </div>
+
+    <!-- Log Entries -->
+    <div class="section-title">📋 سجل الجلسات</div>
+    <div id="logEntries"></div>
+
+    <!-- Data Management -->
+    <div class="section-title">💾 إدارة البيانات</div>
+    <div class="data-management">
+      <button class="data-btn" onclick="exportData()">⬇️ تصدير تقدمي (JSON)</button>
+      <label class="data-btn import-label">
+        📂 استيراد نسخة احتياطية
+        <input type="file" id="importFile" accept=".json" onchange="importData(event)" style="display:none" />
+      </label>
+      <button class="data-btn danger" onclick="confirmReset()">🗑️ مسح كل البيانات</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Pomodoro Timer Widget -->
+<div id="timerWidget" class="timer-widget">
+  <div class="timer-header">
+    <span class="timer-title">⏱ المؤقت</span>
+    <button class="timer-close" onclick="document.getElementById('timerWidget').classList.toggle('timer-minimized')">—</button>
+  </div>
+  <div class="timer-body">
+    <div class="timer-display" id="timerDisplay">25:00</div>
+    <div class="timer-activity" id="timerActivity">اضغط على أي نشاط لبدء المؤقت</div>
+    <div class="timer-controls">
+      <button onclick="startTimer()" id="timerStartBtn">▶ ابدأ</button>
+      <button onclick="pauseTimer()">⏸</button>
+      <button onclick="resetTimer()">↺</button>
+    </div>
+    <div class="timer-presets">
+      <button onclick="setTimer(25, 'بومودورو 25 دقيقة')">25</button>
+      <button onclick="setTimer(45, '45 دقيقة')">45</button>
+      <button onclick="setTimer(60, 'ساعة كاملة')">60</button>
+      <button onclick="setTimer(90, '90 دقيقة')">90</button>
+    </div>
+  </div>
 </div>
 
 <script>
   let currentPhase = 0;
 
+  // ─── Theme ───────────────────────────────────────────────
+  function toggleTheme() {
+    const current = document.documentElement.dataset.theme || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    document.getElementById('themeToggle').textContent = next === 'dark' ? '🌙' : '☀️';
+    localStorage.setItem('theme', next);
+  }
+
+  // ─── Phase Navigation ─────────────────────────────────────
   function showPhase(index) {
     document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1335,8 +1668,33 @@
     document.querySelectorAll('.tab')[index].classList.add('active');
     currentPhase = index;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Refresh weekly tracker
+    renderWeeklyTracker();
+
+    // Restore day highlight for this phase
+    const savedDay = localStorage.getItem('activeStudyDay');
+    if (savedDay !== null && index < 4) {
+      const phaseEl = document.getElementById('phase-' + index);
+      if (phaseEl) {
+        const allCards = phaseEl.querySelectorAll('.day-card');
+        highlightDayCards(parseInt(savedDay), allCards);
+        // Update buttons in this phase
+        const btns = phaseEl.querySelectorAll('.day-sel-btn');
+        btns.forEach((btn, i) => {
+          btn.classList.toggle('active', i === parseInt(savedDay));
+        });
+      }
+    }
+
+    // Refresh activity log when switching to that tab
+    if (index === 5) {
+      renderActivityLog();
+      renderAnalytics();
+    }
   }
 
+  // ─── Milestones ───────────────────────────────────────────
   function toggleMilestone(el) {
     el.classList.toggle('done');
     if (el.classList.contains('done')) {
@@ -1344,6 +1702,22 @@
     } else {
       el.querySelector('.milestone-check').textContent = '';
     }
+    // Persist
+    const id = el.dataset.id;
+    if (id) {
+      localStorage.setItem('milestone_' + id, el.classList.contains('done') ? '1' : '0');
+    }
+    updateProgress();
+  }
+
+  function loadMilestones() {
+    document.querySelectorAll('.milestone-item[data-id]').forEach(el => {
+      const id = el.dataset.id;
+      if (localStorage.getItem('milestone_' + id) === '1') {
+        el.classList.add('done');
+        el.querySelector('.milestone-check').textContent = '✓';
+      }
+    });
     updateProgress();
   }
 
@@ -1354,6 +1728,449 @@
     document.getElementById('progressFill').style.width = pct + '%';
     document.getElementById('progressVal').textContent = pct + '%';
   }
+
+  // ─── Day Selector ─────────────────────────────────────────
+  function highlightDayCards(index, cards) {
+    cards.forEach((card, i) => {
+      card.classList.remove('day-active', 'day-inactive');
+      if (i === index) {
+        card.classList.add('day-active');
+      } else {
+        card.classList.add('day-inactive');
+      }
+    });
+  }
+
+  function selectDay(index, btn) {
+    // Get the phase currently shown
+    const phaseEl = document.getElementById('phase-' + currentPhase);
+    if (!phaseEl) return;
+    const allCards = phaseEl.querySelectorAll('.day-card');
+    highlightDayCards(index, allCards);
+
+    // Update buttons in the current phase only
+    const btns = phaseEl.querySelectorAll('.day-sel-btn');
+    btns.forEach((b, i) => b.classList.toggle('active', i === index));
+
+    localStorage.setItem('activeStudyDay', index);
+  }
+
+  // ─── Weekly Tracker ───────────────────────────────────────
+  const DAY_NAMES_AR = ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'];
+
+  function getDateKey(date) {
+    return date.toISOString().slice(0, 10);
+  }
+
+  function renderWeeklyTracker() {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const container = document.getElementById('trackerDays');
+    if (!container) return;
+    container.innerHTML = '';
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - dayOfWeek + i);
+      const key = 'day_' + getDateKey(d);
+      const isStudied = localStorage.getItem(key) === '1';
+      const isToday = i === dayOfWeek;
+
+      const btn = document.createElement('button');
+      btn.className = 'day-dot' + (isStudied ? ' studied' : '') + (isToday ? ' today' : '');
+      btn.innerHTML = '<span>' + DAY_NAMES_AR[i] + '</span><span class="day-num">' + d.getDate() + '</span>' + (isStudied ? '<span>✓</span>' : '');
+      btn.onclick = () => {
+        const newState = localStorage.getItem(key) !== '1';
+        localStorage.setItem(key, newState ? '1' : '0');
+        renderWeeklyTracker();
+      };
+      container.appendChild(btn);
+    }
+    renderStreak();
+  }
+
+  function renderStreak() {
+    const today = new Date();
+    let weeks = 0;
+    for (let w = 0; w < 52; w++) {
+      const weekStart = new Date(today);
+      weekStart.setDate(today.getDate() - today.getDay() - w * 7);
+      let count = 0;
+      for (let d = 0; d < 7; d++) {
+        const day = new Date(weekStart);
+        day.setDate(weekStart.getDate() + d);
+        if (localStorage.getItem('day_' + getDateKey(day)) === '1') count++;
+      }
+      if (count >= 3) weeks++;
+      else break;
+    }
+    const el = document.getElementById('streakDisplay');
+    if (el) el.textContent = 'سلسلة: ' + weeks + ' أسبوع' + (weeks !== 1 ? ' متواصل' : '');
+  }
+
+  // ─── Speaking Prompts ─────────────────────────────────────
+  const SPEAKING_TOPICS = [
+    // Phase 0 - Simple topics
+    [
+      "صف روتينك اليومي خطوة بخطوة بالإنجليزية",
+      "تحدث عن طعامك المفضل — لماذا تحبه؟",
+      "صف غرفتك كأنك تشرح لشخص لم يرها",
+      "تحدث عن آخر فيلم أو مسلسل شاهدته",
+      "ما هي هواياتك؟ وكم من الوقت تقضي فيها؟",
+      "صف يوم عطلتك المثالية",
+      "تحدث عن مدينتك — ما الجميل فيها؟",
+      "صف أفضل وجبة أكلتها في حياتك",
+      "تحدث عن شخص تحترمه كثيراً",
+      "ما الشيء الذي تريد تعلمه في المستقبل؟",
+      "صف طقس اليوم وكيف يؤثر على مزاجك",
+      "تحدث عن آخر رحلة قمت بها",
+      "ما هو كتابك أو فيلمك المفضل ولماذا؟",
+      "صف روتين صباحك خطوة بخطوة",
+      "تحدث عن تجربة ممتعة مع الأصدقاء",
+      "صف عملك أو دراستك بالتفصيل",
+      "ما الاختلاف بين حياتك الآن وقبل 5 سنوات؟",
+      "تحدث عن شيء تخطط لشرائه قريباً",
+      "صف أجمل مكان زرته في حياتك",
+      "تحدث عن هواية جديدة تريد تجربتها"
+    ],
+    // Phase 1 - Discussion topics
+    [
+      "ما رأيك في استخدام الذكاء الاصطناعي في التعليم؟",
+      "ناقش إيجابيات وسلبيات العمل من المنزل",
+      "ما هو الفرق بين الذكاء والنجاح في حياتك؟",
+      "كيف تؤثر وسائل التواصل الاجتماعي على الشباب؟",
+      "هل يجب على الجميع تعلم لغة ثانية؟ ولماذا؟",
+      "ما رأيك في الأفلام العربية مقارنة بالأجنبية؟",
+      "كيف تحافظ على صحتك النفسية في ظل ضغوط الحياة؟",
+      "ناقش أهمية القراءة في تطوير الشخصية",
+      "ما الفرق بين العيش في المدينة والريف؟",
+      "كيف يمكن للتكنولوجيا أن تحسن التعليم؟",
+      "ناقش تأثير الألعاب الإلكترونية على الأطفال",
+      "هل الجامعة ضرورية للنجاح المهني؟",
+      "ما رأيك في السياحة الداخلية مقابل الخارجية؟",
+      "كيف تختار أصدقاءك؟ ما المعايير المهمة؟",
+      "ناقش أهمية الرياضة في الحياة اليومية",
+      "ما الذي يجعل شخصاً ما قائداً ناجحاً؟",
+      "هل المال هو المحرك الأساسي للسعادة؟",
+      "كيف تتعامل مع الفشل والإحباط؟",
+      "ناقش أثر العولمة على الثقافة العربية",
+      "ما هي أهم المهارات للقرن الحادي والعشرين؟"
+    ],
+    // Phase 2 - Complex topics
+    [
+      "هل يجب أن يكون التعليم العالي مجانياً؟ أذكر حججاً لكلا الجانبين",
+      "ناقش العلاقة بين الفقر والجريمة في المجتمعات",
+      "هل الشبكات الاجتماعية ضارة بالمجتمع أكثر من نفعها؟",
+      "ما هي المسؤولية الأخلاقية للشركات الكبرى تجاه البيئة؟",
+      "كيف يجب أن تتعامل الحكومات مع اللاجئين والمهاجرين؟",
+      "ناقش مزايا وعيوب الحضارة الرقمية",
+      "هل الفن والإبداع ضروريان بقدر العلوم والرياضيات؟",
+      "كيف تؤثر التغيرات المناخية على أسلوب حياتنا؟",
+      "ما دور الإعلام في تشكيل الرأي العام؟",
+      "ناقش أخلاقيات الذكاء الاصطناعي وحدوده",
+      "هل يجب تنظيم الإنترنت بقوانين صارمة؟",
+      "كيف يمكن تحقيق التوازن بين التقدم والقيم التقليدية؟",
+      "ناقش أثر الاستعمار على الدول النامية حتى اليوم",
+      "ما هي أسباب عدم المساواة الاقتصادية وكيف نعالجها؟",
+      "هل يجب على الدول الغنية مساعدة الدول الفقيرة؟",
+      "ناقش دور المرأة في سوق العمل المعاصر",
+      "هل العولمة تهديد أم فرصة للهويات الثقافية؟",
+      "كيف يمكن للتعليم أن يقلل من التطرف الفكري؟",
+      "ما مستقبل العمل في ظل الأتمتة والروبوتات؟",
+      "ناقش أهمية الصحة النفسية في مجتمعاتنا"
+    ],
+    // Phase 3 - Advanced / Formal
+    [
+      "Discuss the role of international organisations in resolving global conflicts",
+      "Analyse the economic and social effects of urbanisation on developing countries",
+      "What are the ethical implications of genetic engineering and cloning?",
+      "Discuss the impact of mass media on political processes and democracy",
+      "How can countries balance economic growth with environmental sustainability?",
+      "Evaluate the effectiveness of international aid programmes",
+      "What are the main challenges facing multicultural societies?",
+      "Discuss the advantages and disadvantages of globalisation for small economies",
+      "How should society balance individual freedoms with public safety?",
+      "What role should governments play in regulating technology companies?",
+      "Discuss the causes and consequences of income inequality in modern societies",
+      "How can education systems better prepare students for the digital economy?",
+      "Evaluate the arguments for and against capital punishment",
+      "What are the long-term consequences of an ageing population?",
+      "Discuss the relationship between language and cultural identity",
+      "How can international cooperation address climate change effectively?",
+      "What are the ethical responsibilities of artificial intelligence developers?",
+      "Discuss the impact of social media on political polarisation",
+      "How should healthcare systems adapt to increasing mental health challenges?",
+      "What is the future of work in an increasingly automated world?"
+    ]
+  ];
+
+  function refreshPrompt(phaseIndex) {
+    const topics = SPEAKING_TOPICS[phaseIndex] || SPEAKING_TOPICS[0];
+    const topic = topics[Math.floor(Math.random() * topics.length)];
+    const el = document.getElementById('promptText-' + phaseIndex);
+    if (el) el.textContent = topic;
+  }
+
+  // ─── Pomodoro Timer ───────────────────────────────────────
+  let timerInterval = null;
+  let timerSeconds = 25 * 60;
+  let timerRunning = false;
+  let timerOriginalSeconds = 25 * 60;
+
+  function setTimer(minutes, label) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerSeconds = minutes * 60;
+    timerOriginalSeconds = minutes * 60;
+    document.getElementById('timerActivity').textContent = label;
+    document.getElementById('timerDisplay').classList.remove('timer-urgent');
+    renderTimerDisplay();
+  }
+
+  function startTimer() {
+    if (timerRunning) return;
+    timerRunning = true;
+    if (typeof Notification !== 'undefined' && Notification.permission === 'default') {
+      Notification.requestPermission();
+    }
+    timerInterval = setInterval(() => {
+      timerSeconds--;
+      renderTimerDisplay();
+      if (timerSeconds <= 60) {
+        document.getElementById('timerDisplay').classList.add('timer-urgent');
+      }
+      if (timerSeconds <= 0) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('timerDisplay').textContent = '00:00';
+        if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+          new Notification('انتهى الوقت! ✅', { body: document.getElementById('timerActivity').textContent });
+        }
+      }
+    }, 1000);
+  }
+
+  function pauseTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerSeconds = timerOriginalSeconds;
+    document.getElementById('timerDisplay').classList.remove('timer-urgent');
+    renderTimerDisplay();
+  }
+
+  function renderTimerDisplay() {
+    const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const s = (timerSeconds % 60).toString().padStart(2, '0');
+    document.getElementById('timerDisplay').textContent = m + ':' + s;
+    document.title = m + ':' + s + ' — Roadmap B2';
+  }
+
+  // ─── Activity Log ─────────────────────────────────────────
+  const SKILL_ICONS = { listening: '🎧', speaking: '🗣️', reading: '📖', vocab: '🗂️' };
+  const SKILL_NAMES_AR = { listening: 'استماع', speaking: 'كلام', reading: 'قراءة', vocab: 'مفردات' };
+
+  function getActivityLog() {
+    try { return JSON.parse(localStorage.getItem('activityLog') || '[]'); } catch (e) { return []; }
+  }
+
+  function saveActivityLog(log) {
+    localStorage.setItem('activityLog', JSON.stringify(log));
+  }
+
+  function addLogEntry() {
+    const skill = document.getElementById('logSkill').value;
+    const duration = parseInt(document.getElementById('logDuration').value);
+    const resource = document.getElementById('logResource').value.trim();
+    const note = document.getElementById('logNote').value.trim();
+
+    if (!duration || duration < 1) { alert('يرجى إدخال مدة الجلسة بالدقائق'); return; }
+    if (!resource) { alert('يرجى إدخال اسم المصدر أو النشاط'); return; }
+
+    const log = getActivityLog();
+    log.unshift({
+      id: Date.now(),
+      date: new Date().toISOString().slice(0, 10),
+      skill, duration, resource, note
+    });
+    saveActivityLog(log);
+
+    // Clear form
+    document.getElementById('logDuration').value = '';
+    document.getElementById('logResource').value = '';
+    document.getElementById('logNote').value = '';
+
+    renderActivityLog();
+    renderAnalytics();
+  }
+
+  function deleteLogEntry(id) {
+    const log = getActivityLog().filter(e => e.id !== id);
+    saveActivityLog(log);
+    renderActivityLog();
+    renderAnalytics();
+  }
+
+  function renderActivityLog() {
+    const log = getActivityLog();
+    const container = document.getElementById('logEntries');
+    if (!container) return;
+
+    if (log.length === 0) {
+      container.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">لم تسجّل أي جلسة بعد — ابدأ الآن!</div>';
+      return;
+    }
+
+    container.innerHTML = log.slice(0, 50).map(e => `
+      <div class="log-entry">
+        <div class="log-entry-skill ${e.skill}">${SKILL_ICONS[e.skill] || '📌'}</div>
+        <div class="log-entry-body">
+          <div class="log-entry-header">
+            <span class="log-entry-resource">${e.resource}</span>
+            <span class="log-entry-meta">${e.date} · ${e.duration} دقيقة · ${SKILL_NAMES_AR[e.skill] || e.skill}</span>
+          </div>
+          ${e.note ? `<div class="log-entry-note">${e.note}</div>` : ''}
+        </div>
+        <button class="log-entry-delete" onclick="deleteLogEntry(${e.id})" title="حذف">🗑</button>
+      </div>
+    `).join('');
+  }
+
+  function renderAnalytics() {
+    const log = getActivityLog();
+    if (log.length === 0) return;
+
+    const totals = { listening: 0, speaking: 0, reading: 0, vocab: 0 };
+    log.forEach(e => { totals[e.skill] = (totals[e.skill] || 0) + e.duration; });
+
+    const totalMins = Object.values(totals).reduce((a, b) => a + b, 0);
+    const lsMins = totals.listening + totals.speaking;
+    const lsPct = totalMins > 0 ? Math.round((lsMins / totalMins) * 100) : 0;
+
+    const el = (id) => document.getElementById(id);
+    if (el('totalListening')) el('totalListening').textContent = Math.round(totals.listening / 60 * 10) / 10;
+    if (el('totalSpeaking')) el('totalSpeaking').textContent = Math.round(totals.speaking / 60 * 10) / 10;
+    if (el('totalSessions')) el('totalSessions').textContent = log.length;
+    if (el('lsPct')) el('lsPct').textContent = lsPct + '%';
+
+    // Skill bar (last 30 days)
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const recent = log.filter(e => new Date(e.date) >= thirtyDaysAgo);
+    const recentTotals = { listening: 0, speaking: 0, reading: 0, vocab: 0 };
+    recent.forEach(e => { recentTotals[e.skill] = (recentTotals[e.skill] || 0) + e.duration; });
+    const recentTotal = Object.values(recentTotals).reduce((a, b) => a + b, 0);
+
+    const barContainer = document.getElementById('skillBarContainer');
+    const bar = document.getElementById('skillBar');
+    if (barContainer && bar && recentTotal > 0) {
+      barContainer.style.display = 'block';
+      bar.innerHTML = Object.entries(recentTotals).map(([skill, mins]) => {
+        const pct = ((mins / recentTotal) * 100).toFixed(1);
+        return `<div class="bar-segment ${skill}" style="width:${pct}%" title="${SKILL_NAMES_AR[skill]}: ${Math.round(mins/60*10)/10} ساعة (${pct}%)"></div>`;
+      }).join('');
+
+      const recentLsPct = ((recentTotals.listening + recentTotals.speaking) / recentTotal) * 100;
+      const warning = document.getElementById('targetWarning');
+      if (warning) warning.style.display = recentLsPct < 50 ? 'inline' : 'none';
+    }
+  }
+
+  function exportData() {
+    const data = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      data[key] = localStorage.getItem(key);
+    }
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'english-roadmap-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const data = JSON.parse(e.target.result);
+        Object.entries(data).forEach(([k, v]) => localStorage.setItem(k, v));
+        location.reload();
+      } catch (err) {
+        alert('الملف غير صالح — يرجى اختيار ملف JSON صحيح');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function confirmReset() {
+    if (confirm('هل أنت متأكد؟ سيتم حذف كل بياناتك (الجلسات، التقدم، إلخ). هذا لا يمكن التراجع عنه.')) {
+      localStorage.clear();
+      location.reload();
+    }
+  }
+
+  // ─── DOMContentLoaded Init ────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    // Theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.dataset.theme = savedTheme;
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    // Milestones
+    loadMilestones();
+
+    // Weekly tracker
+    renderWeeklyTracker();
+
+    // Activity log + analytics
+    renderActivityLog();
+    renderAnalytics();
+
+    // Speaking prompts
+    for (let i = 0; i < 4; i++) refreshPrompt(i);
+
+    // Timer: make time slots clickable
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      const timeEl = slot.querySelector('.slot-time');
+      const textEl = slot.querySelector('.slot-text');
+      if (timeEl && textEl) {
+        const match = timeEl.textContent.match(/\d+/);
+        if (match) {
+          const mins = parseInt(match[0]);
+          const label = textEl.textContent.trim().substring(0, 40);
+          slot.addEventListener('click', () => setTimer(mins, label));
+          slot.setAttribute('title', 'اضغط لضبط المؤقت على ' + mins + ' دقيقة');
+        }
+      }
+    });
+
+    // Restore day highlight
+    const savedDay = localStorage.getItem('activeStudyDay');
+    if (savedDay !== null) {
+      const phaseEl = document.getElementById('phase-0');
+      if (phaseEl) {
+        const allCards = phaseEl.querySelectorAll('.day-card');
+        highlightDayCards(parseInt(savedDay), allCards);
+        // Update buttons in phase-0
+        const btns = phaseEl.querySelectorAll('.day-sel-btn');
+        btns.forEach((btn, i) => {
+          btn.classList.toggle('active', i === parseInt(savedDay));
+        });
+      }
+    }
+  });
 </script>
 </body>
 </html>
